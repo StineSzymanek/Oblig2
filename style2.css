@@ -1,0 +1,195 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url(assets/fonts/Montserrat-Bold.ttf);
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Lato', sans-serif;
+    line-height: 1.5;
+    font-size: 1.2rem;
+}
+
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+}
+
+p {
+    max-width: 70ch;
+}
+
+header {
+    height: 55vh;
+    background-image: url(assets/img/studentsbg.png);
+    background-attachment: fixed;
+    background-position: top center;
+    background-size: cover;
+}
+
+header > div {
+    background-color: #c5192d;
+    position: relative;
+    top: 4rem;
+    text-align: center;
+    color: whitesmoke;
+}
+
+main {
+    background-color: whitesmoke;
+    margin-top: 2rem;
+    box-shadow: 0 0 1px 0 darkgrey;
+}
+
+div {
+    margin: 1em;
+}
+
+img {
+    margin: 1em;
+    width: 85%;
+    height: auto;
+}
+
+#intro-container {
+    padding: 1em;
+    background-color: #c5192d;
+}
+
+ul {
+    padding: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul li::before {
+    content: "\1F64C";
+    width: 1rem;
+    margin: 1rem 1rem 0px 1rem;
+    
+}
+
+ul li:nth-child(2)::before {
+    content: "\1F3EB";
+}
+
+ul li:nth-child(3)::before {
+    content: "\1F4DA";
+}
+
+footer {
+    background-color: #c5192d;
+    color: whitesmoke;
+    text-align: center;
+}    
+
+footer > p {
+    padding: 2rem;
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 960px) {
+    header {
+        height: 65vh;
+    }
+
+    article {
+        display: flex;
+    }
+
+    article > div {
+        flex: 50%;
+    }
+
+    article > img {
+        flex: 50%;
+    }
+}
+
+
+/*
+Screens < 600px
+General configurations
+•The whole page sets linear gradient with the following values “(135deg, #f5f7fa 0%, #c3cfe2 100%)”
+•The main font will be “Lato” and sans-serif will be defined as fallback font.
+(•The default browser font size must be set to 14px)
+•The default font size for thecontents of the page will be 1.2rem 
+•The headings (h1-h3) will use “Montserrat” type face and sans-serif as a fallback font.
+•H1 elements will have a size of 4rem
+•H2 elements will have a size of 2.2rem
+(•The paragraph will never exceed 70ch wide) and the distance the distance between lines of text will be set to 1.5
+
+<header>
+It contains the main heading of the page and some introductory text. 
+•The container will be 55vh tall
+•It sets a background image (“studentsbg.png” from assets/img folder)
+•The background image will not scroll with the page
+•The background image will be placed at the top of the screen, and it will be centered horizontally
+•The background image will be scaled “as large as possible to fill the container, stretching the image if necessary. 
+If the proportions of the image differ from the element, it is cropped either vertically or horizontally so that no empty 
+space remains”
+•The background colourof the div inside the header is #c5192d
+•The div inside the header will be pushed down 4rem (i.e.: it is positioned relative to its nearest positioned ancestor which is the header)
+
+<main>
+The main container contains the several articles of the “newsletter”.
+•It sets a box shadow where the blur-radius will be 1px.
+•The box shadow’s color is “darkgrey”
+•The offset-x, offset-y and spread-radius values will be set to 0
+•The background color of this element is “whitesmoke”
+
+#intro-container
+This is the first article inside the main container. 
+•Look at the mock-up and decide what padding/margin you should use (Figure 1)
+•The colour of the background is #c5192d (hint: you may need to use pseudo-elements to create this background. 
+If so, you may need to adjust the z-index of the different elements. The z-index accepts both negative and positive values)
+•The bullet points of the list will be hidden. You must also use CSS (pseudo-elements) to add the emojis in front of the 
+<li> content. Each emoji will have a width of 1rem and the top and its right and left margins will be set to 1rem
+•The CSS code for the emojis is as follows
+o\1F64C
+o\1F3EB
+o\1F4DA
+
+Other <article>s
+You may notice that the “odd” articles (except the first one) have the <img> first (html code) and then the div with the text. 
+Therefore, the images might be displayed in a way that it is not consistend for the user (see Figure 2).
+•(Optional task) make sure the text will be displayed on top of the images in all the articles 
+(HINT: check the following codepenand remember that flexbox and grid layout are not allowed)
+
+
+Screens 600px –960 px
+This screen resolution will follow the same rules/styles presented in the previous screen resolution. 
+However, some rules and parts of the layout may change according to the next points
+General configurations
+(•The default browser font size must be set to 16px) 
+•The header will be 65vh tall
+•The 3 main boxes (“Education for all”, main and footer) will now take only 85 percent of the viewport width (check mock-up)
+
+<articles>
+•Each article will be displayed in a 2-column layout
+•Each column will be 45% wide and there will be a 10% gap between the two columns(Figure 3). 
+HINT: inline elements add a space between them. 
+Therefore, this will cause the elements to be displayed in a new line if the sum of the width of the elements is greater than 100% 
+(this is 50% + 1space + 50%). CSS tricks to the rescue!
+•Observe that the image is aligned to the top of the container
+
+#intro-container
+The red background only covers 50% of the article container(Figure 4). This is, it spans 50% from the left to the right.
+
+
+Screens >960 px
+This screen resolution will follow the same rules/styles presented in the previous screen resolution. 
+However, some rules and parts of the layout may change according to the next points
+General configurations
+(•The default browser font size must be set to 24px) 
+•The header will be 65vh tall
+•The 3 main boxes (“Education for all”, main and footer) will now take only 70 percent of the viewport width (check mock-up)
