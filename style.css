@@ -3,6 +3,7 @@
     src: url(assets/fonts/Montserrat-Bold.ttf);
 }
 
+/*
 body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     font-family: 'Lato', sans-serif;
@@ -114,6 +115,7 @@ footer > p {
         flex: 50%;
     }
 }
+*/
 
 
 /*
@@ -122,12 +124,41 @@ General configurations
 •The whole page sets linear gradient with the following values “(135deg, #f5f7fa 0%, #c3cfe2 100%)”
 •The main font will be “Lato” and sans-serif will be defined as fallback font.
 (•The default browser font size must be set to 14px)
-•The default font size for thecontents of the page will be 1.2rem 
+•The default font size for the contents of the page will be 1.2rem 
 •The headings (h1-h3) will use “Montserrat” type face and sans-serif as a fallback font.
 •H1 elements will have a size of 4rem
 •H2 elements will have a size of 2.2rem
 (•The paragraph will never exceed 70ch wide) and the distance the distance between lines of text will be set to 1.5
+*/
 
+html {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
+
+body {
+    font-size: 1.2rem;
+    margin: 0px;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+}
+
+p {
+    max-width: 70ch;
+    line-height: 1.5;
+}
+/*
 <header>
 It contains the main heading of the page and some introductory text. 
 •The container will be 55vh tall
@@ -139,14 +170,62 @@ If the proportions of the image differ from the element, it is cropped either ve
 space remains”
 •The background colourof the div inside the header is #c5192d
 •The div inside the header will be pushed down 4rem (i.e.: it is positioned relative to its nearest positioned ancestor which is the header)
+*/
 
+header {
+    height: 55vh;
+    background-image: url(assets/img/studentsbg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+}
+
+header > div {
+    background-color: #c5192d;
+    color: whitesmoke;
+    position: absolute;
+    bottom: -4rem;
+    max-width: 95vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/*
 <main>
 The main container contains the several articles of the “newsletter”.
 •It sets a box shadow where the blur-radius will be 1px.
 •The box shadow’s color is “darkgrey”
 •The offset-x, offset-y and spread-radius values will be set to 0
 •The background color of this element is “whitesmoke”
+*/
 
+main {
+    box-shadow: 0 0 1px 0 darkgrey;
+    background-color: whitesmoke;
+    position: relative;
+    top: 6rem;
+    max-width: 95vw;
+    margin: auto;
+}
+
+footer {
+    position: relative;
+    top: 6rem;
+    max-width: 95vw;
+    margin: auto;
+    background-color: #c5192d;
+    color: whitesmoke;
+    text-align: center;
+}
+
+footer > p {
+    padding: 2rem;
+}
+/*
 #intro-container
 This is the first article inside the main container. 
 •Look at the mock-up and decide what padding/margin you should use (Figure 1)
@@ -158,7 +237,53 @@ If so, you may need to adjust the z-index of the different elements. The z-index
 o\1F64C
 o\1F3EB
 o\1F4DA
+*/
 
+#intro-container {
+    background-color: #c5192d;
+    padding: 2rem;
+}
+
+ul {
+    padding: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul li::before {
+    content: "\1F64C";
+    margin: 1rem 1rem 0px 1rem;
+    
+}
+
+ul li:nth-child(2)::before {
+    content: "\1F3EB";
+}
+
+ul li:nth-child(3)::before {
+    content: "\1F4DA";
+}
+
+article:nth-child(2) {
+    padding: 2rem;
+    border-bottom: 0.1px solid darkgray;
+}
+
+article:nth-child(3) {
+    padding: 2rem;
+}
+
+article:nth-child(4) {
+    padding: 2rem;
+}
+
+img {
+    width: 100%;
+}
+
+/*
 Other <article>s
 You may notice that the “odd” articles (except the first one) have the <img> first (html code) and then the div with the text. 
 Therefore, the images might be displayed in a way that it is not consistend for the user (see Figure 2).
@@ -173,7 +298,50 @@ General configurations
 (•The default browser font size must be set to 16px) 
 •The header will be 65vh tall
 •The 3 main boxes (“Education for all”, main and footer) will now take only 85 percent of the viewport width (check mock-up)
+*/
 
+@media screen and (min-width: 600px) and (max-width: 960px) {
+    html {
+        font-size: 16px;
+    }
+
+    header {
+        height: 65vh;
+    }
+
+    header > div {
+        max-width: 85vw;
+    }
+
+    main {
+        max-width: 85vw;
+    }
+
+    footer {
+        max-width: 85vw;
+    }
+
+    article {
+        display: flex;
+        max-width: 100%;
+        column-gap: 10%;
+    }
+
+    article > div {
+        flex: 45%;
+    }
+
+    article img {
+        max-width: 45%;
+        object-fit: cover;
+    }
+
+    #intro-container {
+        background: linear-gradient(90deg, #c5192d 50%, whitesmoke 50%);
+    }
+}
+
+/*
 <articles>
 •Each article will be displayed in a 2-column layout
 •Each column will be 45% wide and there will be a 10% gap between the two columns(Figure 3). 
@@ -181,7 +349,10 @@ HINT: inline elements add a space between them.
 Therefore, this will cause the elements to be displayed in a new line if the sum of the width of the elements is greater than 100% 
 (this is 50% + 1space + 50%). CSS tricks to the rescue!
 •Observe that the image is aligned to the top of the container
+*/
 
+
+/*
 #intro-container
 The red background only covers 50% of the article container(Figure 4). This is, it spans 50% from the left to the right.
 
@@ -193,3 +364,45 @@ General configurations
 (•The default browser font size must be set to 24px) 
 •The header will be 65vh tall
 •The 3 main boxes (“Education for all”, main and footer) will now take only 70 percent of the viewport width (check mock-up)
+*/
+
+@media screen and (min-width: 960px) {
+    html {
+        font-size: 24px;
+    }
+
+    header {
+        height: 65vh;
+    }
+
+    header > div {
+        max-width: 70vw;
+    }
+
+    main {
+        max-width: 70vw;
+    }
+
+    footer {
+        max-width: 70vw;
+    }
+
+    article {
+        display: flex;
+        max-width: 100%;
+        column-gap: 10%;
+    }
+
+    article > div {
+        flex: 45%;
+    }
+
+    article img {
+        max-width: 45%;
+        object-fit: cover;
+    }
+
+    #intro-container {
+        background: linear-gradient(90deg, #c5192d 50%, whitesmoke 50%);
+    }
+}
